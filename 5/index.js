@@ -2,14 +2,13 @@ let items = [];
 
 const itemsDiv = document.getElementById("items")
 const input = document.getElementById("itemInput")
-const storageKey = "items"
-
+const storageKey = "items";
 
 function renderItems() {
     itemsDiv.innerHTML = null;
 
     for (const [idx, item] of Object.entries(items)) {
-        const container = document.createElement("div")
+         const container = document.createElement("div")
         container.style.marginBottom = "10px"
 
         const text = document.createElement("p")
@@ -19,7 +18,7 @@ function renderItems() {
 
         const button = document.createElement("button")
         button.textContent = "Delete"
-        button.onClick = () => removeItem(idx)
+        button.onclick = () => removeItem(idx)
 
         container.appendChild(text)
         container.appendChild(button)
@@ -31,7 +30,7 @@ function renderItems() {
 function loadItems() {
     const oldItems = localStorage.getItem(storageKey)
     if (oldItems) items = JSON.parse(oldItems)
-     renderItems()
+        renderItems()
 }
 
 function saveItems() {
@@ -39,7 +38,7 @@ function saveItems() {
     localStorage.setItem(storageKey, stringItems)
 }
 
-function addItems() {
+function addItem() {
     const value = input.value;
     if (!value) {
         alert("You cannot add an empty item")
@@ -58,3 +57,4 @@ function removeItem(idx) {
 }
 
 document.addEventListener("DOMContentLoaded", loadItems)
+
